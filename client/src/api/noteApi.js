@@ -1,0 +1,21 @@
+import API from './axiosInstance';
+
+export const getNotesAPI = (params) => API.get('/notes', { params });
+export const getNoteAPI = (id) => API.get(`/notes/${id}`);
+export const getMyNotesAPI = (params) => API.get('/notes/my-notes', { params });
+export const createNoteAPI = (formData) => API.post('/notes', formData, { headers: { 'Content-Type': 'multipart/form-data' } });
+export const updateNoteAPI = (id, data) => API.put(`/notes/${id}`, data);
+export const deleteNoteAPI = (id) => API.delete(`/notes/${id}`);
+export const downloadNoteAPI = (id) => API.get(`/notes/${id}/download`);
+export const getCommentsAPI = (noteId, params) => API.get(`/notes/${noteId}/comments`, { params });
+export const addCommentAPI = (noteId, data) => API.post(`/notes/${noteId}/comments`, data);
+export const deleteCommentAPI = (id) => API.delete(`/notes/comments/${id}`);
+export const rateNoteAPI = (noteId, value) => API.post(`/notes/${noteId}/ratings`, { value });
+export const getRatingsAPI = (noteId) => API.get(`/notes/${noteId}/ratings`);
+export const toggleBookmarkAPI = (noteId) => API.post(`/bookmarks/${noteId}`);
+export const getBookmarksAPI = (params) => API.get('/bookmarks', { params });
+export const checkBookmarkAPI = (noteId) => API.get(`/bookmarks/${noteId}/check`);
+export const getNotificationsAPI = (params) => API.get('/notifications', { params });
+export const markNotificationsReadAPI = (ids) => API.put('/notifications/read', { ids });
+export const updateProfileAPI = (data) => API.put('/users/profile', data);
+export const changePasswordAPI = (data) => API.put('/users/change-password', data);
